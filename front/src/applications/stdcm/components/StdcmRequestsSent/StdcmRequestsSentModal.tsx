@@ -27,7 +27,7 @@ const StdcmRequestsSentModal = ({ onClose }: StdcmRequestsSentModalProps) => {
     sameElse: t('requestsSentModal.calendar.sameElse'),
   };
 
-  const { requestsSentData } = useStdcmRequestsSent();
+  const { requestsSentData, refetchData } = useStdcmRequestsSent();
 
   const requestsSentRows = () =>
     requestsSentData.map((request, index) => {
@@ -82,6 +82,9 @@ const StdcmRequestsSentModal = ({ onClose }: StdcmRequestsSentModalProps) => {
       header={
         <>
           <h5>{t('requestsSentModal.title')}</h5>
+          <button type="button" onClick={refetchData}>
+            refresh
+          </button>
           <button type="button" onClick={onClose}>
             <X size="lg" />
           </button>
